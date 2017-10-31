@@ -56,6 +56,7 @@ set(LUA_SRCS
 
 set(mana_SRCS
     ${PROJECT_SOURCE_DIR}/source/main.c
+    ${PROJECT_SOURCE_DIR}/source/lexer.c
 )
 
 add_executable(mana  
