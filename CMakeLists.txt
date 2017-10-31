@@ -13,6 +13,7 @@ set (PROJECT_INCLUDE_DIR
     ${PROJECT_SOURCE_DIR}/vendor/utf8
     ${PROJECT_SOURCE_DIR}/vendor/argparse
     ${PROJECT_SOURCE_DIR}/vendor/md5
+    ${PROJECT_SOURCE_DIR}/vendor/liblex
 )
 
 include_directories(${PROJECT_INCLUDE_DIR})
@@ -68,7 +69,12 @@ add_executable(mana
     ${PROJECT_SOURCE_DIR}/vendor/pdfgen/pdfgen.c
     ${PROJECT_SOURCE_DIR}/vendor/argparse/argparse.c
     ${PROJECT_SOURCE_DIR}/vendor/md5/md5.c
+    ${PROJECT_SOURCE_DIR}/vendor/liblex/regex.c
+    ${PROJECT_SOURCE_DIR}/vendor/liblex/token.c
+    ${PROJECT_SOURCE_DIR}/vendor/liblex/tokenizer.c
 )
+
+target_link_libraries(mana pcre)
 
 if (UNIX)
     target_link_libraries(mana m pthread)
