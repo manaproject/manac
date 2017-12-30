@@ -16,7 +16,7 @@ typedef enum
 	IF, ELSE, MATCH,
 	FOR, FOREACH, WHILE, REPEAT, BREAK, CONTINUE, CONST,
 	// Types
-	U8, I8, U16, I16, U32, S32, U64, S64, F32, F64, TK_BOOL, CHAR, TK_BYTE,
+	U8, I8, U16, I16, U32, S32, U64, S64, F32, F64, TK_BOOL, TK_CHAR, TK_BYTE,
 	// Values
 	STRING, FSTRING, INTEGER, TK_FLOAT, /*HEX, OCT,*/
 	IN, AS, TRUE, FALSE, ANNOTATION,
@@ -87,7 +87,7 @@ static const KeywordToken keywords[] =
 	{F32, "f32"},
 	{F64, "f64"},
 	{TK_BOOL, "bool"}, 
-	{CHAR, "char"},
+	{TK_CHAR, "char"},
 	{TK_BYTE, "byte"},
 	{TRUE, "true"},
 	{FALSE, "false"},
