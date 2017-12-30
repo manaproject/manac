@@ -40,11 +40,16 @@
 #pragma warning(pop)
 #endif
 
+/* update as for https://stackoverflow.com/questions/126279/c99-stdint-h-header-and-ms-visual-studio
+ * MSVC versions: https://stackoverflow.com/questions/70013/how-to-detect-if-im-compiling-code-with-visual-studio-2008
+ */ 
 #if defined(_MSC_VER)
+#if(_MSC_VER < 1600)
 #define int32_t __int32
 #define uint32_t __uint32
 #else
 #include <stdint.h>
+#endif
 #endif
 
 #if defined(__clang__)
