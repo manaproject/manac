@@ -139,7 +139,7 @@ Token * lexNumber(LexInfo * li){
 		}
 
 		/* change it to float */
-		t->lt = FLOAT;
+		t->lt = TK_FLOAT;
 
 		if (content[*bp] == '.'){
 			/* Free Resources */
