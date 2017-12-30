@@ -1,0 +1,7 @@
+/Users/soulaymen/code/manac/build/CMakeFiles/install/local.dir
+/Users/soulaymen/code/manac/build/CMakeFiles/install/strip.dir
+/Users/soulaymen/code/manac/build/CMakeFiles/install.dir
+/Users/soulaymen/code/manac/build/CMakeFiles/list_install_components.dir
+/Users/soulaymen/code/manac/build/CMakeFiles/rebuild_cache.dir
+/Users/soulaymen/code/manac/build/CMakeFiles/edit_cache.dir
+/Users/soulaymen/code/manac/build/CMakeFiles/mana.dir
