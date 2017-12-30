@@ -1,0 +1,2 @@
+org.praisethemoon.mana.stdio
+dummy to stop test from crashing because it reached EOF.

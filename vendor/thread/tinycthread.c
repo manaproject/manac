@@ -22,7 +22,7 @@ freely, subject to the following restrictions:
     distribution.
 */
 
-#include "thread.h"
+#include "tinycthread.h"
 #include <stdlib.h>
 
 /* Platform specific includes */
@@ -35,11 +35,6 @@ freely, subject to the following restrictions:
 #elif defined(_TTHREAD_WIN32_)
   #include <process.h>
   #include <sys/timeb.h>
-#endif
-
-#if defined(__MINGW32__)
-  #include<winbase.h>
-  #include <windows.h>
 #endif
 
 /* Standard, good-to-have defines */

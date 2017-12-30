@@ -1,10 +1,25 @@
-#include <stdio.h>
-#include <mana.h>
-#include <lexer.h>
 
-int main(int argc, char *argv[])
-{
-	printf("mana programming language v%s\n", MANA_VERSION);
-	startLex();
+#include <stdio.h>
+
+#include "flag.h"
+#include "utf8.h"
+#include "utils.h"
+#include "lexer.h"
+#include "parser.h"
+#include "dmt.h"
+#include "unit_tests.h"
+
+#define VERSION "v1.0.0"
+
+int main(int argc, const char *argv[]) {
+	/*
+	LexInfo * li = dmt_calloc(1, sizeof(LexInfo));
+	startLexicalAnalysis("sample.mana", li);
+	parse(li, NULL);
+	printf("done\n");
+	//dmt_dump(stdout);
 	return 0;
+	*/
+
+	runTests();
 }

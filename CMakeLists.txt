@@ -11,12 +11,15 @@ set (PROJECT_INCLUDE_DIR
     ${PROJECT_SOURCE_DIR}/vendor/tar
     ${PROJECT_SOURCE_DIR}/vendor/thread
     ${PROJECT_SOURCE_DIR}/vendor/utf8
-    ${PROJECT_SOURCE_DIR}/vendor/argparse
-    ${PROJECT_SOURCE_DIR}/vendor/md5
-    ${PROJECT_SOURCE_DIR}/vendor/liblex
+    ${PROJECT_SOURCE_DIR}/vendor/rlutils
+    ${PROJECT_SOURCE_DIR}/vendor/flag
+    ${PROJECT_SOURCE_DIR}/vendor/minunit
 )
 
-include_directories(${PROJECT_INCLUDE_DIR})
+include_directories(
+    ${PROJECT_INCLUDE_DIR}
+    ${PROJECT_INCLUDE_DIR}/source
+)
 
 set(LUA_SRCS 
     ${PROJECT_SOURCE_DIR}/vendor/lua/lzio.c
@@ -56,6 +59,13 @@ set(LUA_SRCS
 
 set(mana_SRCS
     ${PROJECT_SOURCE_DIR}/source/main.c
+    ${PROJECT_SOURCE_DIR}/source/mana.c
+    ${PROJECT_SOURCE_DIR}/source/lexer.c
+    ${PROJECT_SOURCE_DIR}/source/parser.c
+    ${PROJECT_SOURCE_DIR}/source/utils.c
+    ${PROJECT_SOURCE_DIR}/source/error.c
+    ${PROJECT_SOURCE_DIR}/source/unit_tests.c
+    ${PROJECT_SOURCE_DIR}/source/lexer.c
     ${PROJECT_SOURCE_DIR}/source/lexer.c
 )
 
@@ -64,18 +74,13 @@ add_executable(mana
     ${LUA_SRCS}
     ${PROJECT_SOURCE_DIR}/vendor/containers/vec.c 
     ${PROJECT_SOURCE_DIR}/vendor/containers/map.c 
-    ${PROJECT_SOURCE_DIR}/vendor/memory/memory.c 
+    ${PROJECT_SOURCE_DIR}/vendor/memory/dmt.c 
     ${PROJECT_SOURCE_DIR}/vendor/tar/microtar.c 
-    ${PROJECT_SOURCE_DIR}/vendor/thread/thread.c
+    ${PROJECT_SOURCE_DIR}/vendor/thread/tinycthread.c
     ${PROJECT_SOURCE_DIR}/vendor/pdfgen/pdfgen.c
-    ${PROJECT_SOURCE_DIR}/vendor/argparse/argparse.c
+    ${PROJECT_SOURCE_DIR}/vendor/flag/flag.c
     ${PROJECT_SOURCE_DIR}/vendor/md5/md5.c
-    ${PROJECT_SOURCE_DIR}/vendor/liblex/regex.c
-    ${PROJECT_SOURCE_DIR}/vendor/liblex/token.c
-    ${PROJECT_SOURCE_DIR}/vendor/liblex/tokenizer.c
 )
-
-target_link_libraries(mana pcre)
 
 if (UNIX)
     target_link_libraries(mana m pthread)

@@ -1,0 +1,41 @@
+
+
+import (
+	std.functional
+	std.math
+	hypergui.GUI.*
+)
+
+let str = "上記の著作権表示およびこの許可通知は、すべての"
+
+fn clear() = 
+	for i: u32 in Interval(1, 100) {
+		print("\n")
+	}
+
+interface ServerSkeleton {
+	fn getRoutes() -> String[]
+	fn matchRoute(route: String) -> bool
+}
+
+solid class Server implements ServerSkeleton {
+	
+	local lroutes = [
+		"/home/index",
+		"/shop/",
+		"/shop/{id}",
+		"shop/{id}/purchase"
+	]
+
+	fn getRoutes() -> String = lroutes
+
+	/* 
+	 * any() return true if an elements of the list matches a given
+	 * lambda expression, else it does a recursive call util the
+	 * list is empty and returns false
+	 */
+
+	fn matchRoute(route: String) -> bool =
+		any(lroutes, fn(r: String) => r == route)
+}
+;

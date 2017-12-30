@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "memory.h"
+#include "dmt.h"
 
 #ifdef DMT_STACK_TRACE
 #include <execinfo.h>
