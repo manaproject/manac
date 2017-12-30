@@ -125,6 +125,8 @@ void parseImportStatement(LexInfo* li, AST* ast){
 			}
 			printf("%s\n", dest->name);
 
+			vec_push(&ast->package->imports, dest);
+
 			if(currentToken(li)->lt == ','){
 				step(li);
 			}
@@ -132,6 +134,27 @@ void parseImportStatement(LexInfo* li, AST* ast){
 				keep = 0;
 			}
 		}
+		match(li, '}');
+		step(li);
+	}
+	else {
+		Namespace* dest = NULL;
+		INIT_NAMESPACE(dest);
+
+		uint16_t iterator = 0;
+		// iterate over the root
+		for(;iterator < ins->path.length; iterator++){
+			vec_push(&dest->path, ins->path.data[iterator]);
+		}
+	
+		// import namespace's name is the final name used.
+		dest->name = ins->name;
+		for(iterator = 0; iterator<dest->path.length; iterator++){
+			printf("%s, ", dest->path.data[iterator]);
+		}
+		printf("%s\n", dest->name);
+
+		vec_push(&ast->package->imports, dest);
 	}
 }
 
@@ -151,8 +174,21 @@ void parseImportBlock(LexInfo* li, AST* ast){
 		return;
 	}
 	else {
-		parseImportStatement(li, ast);
+		uint8_t keep = 1;
+		while(keep){
+			parseImportStatement(li, ast);
+
+			if(currentToken(li)->lt == ','){
+				step(li);
+			}
+			else{
+				keep = 0;
+			}
+		}
 	}
+
+	match(li, ')');
+	step(li);
 }
 
 /*
@@ -211,4 +247,5 @@ void parse(LexInfo* li, AST* ast) {
 void prepareParsing(LexInfo* li){
 	AST* ast = dmt_calloc(1, sizeof(AST));
 	ast->type = AST_PACKAGE;
+	parse(li, ast);
 }

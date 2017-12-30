@@ -1,0 +1,4 @@
+import (
+    org.praisethemoon {mana.system.io.stdio, java.jre},
+    std.system.yes
+)
